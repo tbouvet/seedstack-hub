@@ -6,7 +6,8 @@ ENV HUB_RELEASE=
 
 RUN mkdir /scripts
 COPY scripts/install.sh /scripts/install.sh 
-RUN chmod +x /scripts/install.sh && /scripts/install.sh
+RUN chmod +x /scripts/install.sh 
+RUN /scripts/install.sh
 
 EXPOSE 8080
 
