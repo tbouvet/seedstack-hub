@@ -4,10 +4,13 @@ RUN apk update && apk add wget
 ENV HUB_SNAPSHOT=1.0.0
 ENV HUB_RELEASE=
 
-RUN mkdir /scripts
-COPY scripts/install.sh /scripts/install.sh 
-RUN chmod +x /scripts/install.sh 
-RUN /scripts/install.sh
+RUN env
+RUN echo $*
+
+#RUN mkdir /scripts
+#COPY scripts/install.sh /scripts/install.sh 
+#RUN chmod +x /scripts/install.sh 
+#RUN /scripts/install.sh
 
 EXPOSE 8080
 
