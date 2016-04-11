@@ -1,14 +1,11 @@
 FROM java:alpine
-RUN apk update && apk add wget
 
-ENV HUB_SNAPSHOT=1.0.0
-ENV HUB_RELEASE=
+ENV HUB_VERSION=1.0.0
 
-RUN mkdir /scripts
-COPY scripts/install.sh /scripts/install.sh 
-RUN chmod +x /scripts/install.sh 
-RUN /scripts/install.sh
+RUN mkdir /opt
+ADD https://oss.jfrog.org/artifactory/oss-snapshot-local/org/seedstack/hub/seedstack-hub/${HUB_VERSION}-SNAPSHOT/seedstack-hub-${HUB_VERSION}-20160408.190101-20-capsule.jar /opt/capsule.jar
 
 EXPOSE 8080
 
 CMD exec java $JAVA_OPTS -jar /opt/capsule.jar
+

@@ -1,0 +1,13 @@
+FROM java:alpine
+RUN apk update && apk add wget
+
+ENV HUB_VERSION=1.0.0-SNAPSHOT
+
+RUN mkdir /scripts
+COPY scripts/install.sh /scripts/install.sh 
+RUN chmod +x /scripts/install.sh 
+RUN /scripts/install.sh
+
+EXPOSE 8080
+
+CMD exec java $JAVA_OPTS -jar /opt/capsule.jar
